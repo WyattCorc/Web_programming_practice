@@ -1,0 +1,21 @@
+<html>
+<body>
+    <h1>Input passwords!</h1>
+<form id="passwordForm">
+    <input type="text" id="pass1" placeholder="Password" required>
+    <input type="text" id="pass2" placeholder="Confirm Password" required>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById('passwordForm').onsubmit = function(e) {
+    e.preventDefault();
+    let p1 = document.getElementById('pass1').value;
+    let p2 = document.getElementById('pass2').value;
+
+    if (p1.length < 8) return alert("Must be over 8 characters!");
+    if (p1 !== p2) return alert("Passwords do not match!");
+
+    alert("Success!");
+};
+</script>

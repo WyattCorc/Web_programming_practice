@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table Generator</title>
+</head>
+<body>
+
+    <h2>Multiplication Table Generator</h2>
+    
+    <!-- HTML Form -->
+    <form method="POST" action="">
+        <label for="num">Enter a number: </label>
+        <input type="number" id="num" name="num" min="1" required value="<?php echo isset($_POST['num']) ? htmlspecialchars($_POST['num']) : ''; ?>">
+        <button type="submit">Generate</button>
+    </form>
+
+    <br><br>
+
+    <?php
+    // Check if the form has been submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['num'])) {
+        // Get and sanitize the input number
+        $number = intval($_POST['num']);
+
+        if ($number > 0) {
+            // Start the HTML table
+            echo "<table border='1' cellpadding='5' style='border-collapse: collapse; text-align: center;'>";
+
+            // Print the top header row for column indexes
+            echo "<tr style='background-color: #f2f2f2;'>";
+            echo "<th>*</th>"; // Top-left corner cell
+            for ($col = 1; $col <= $number; $col++) {
+                echo "<th>$col</th>";
+            }
+            echo "</tr>";
+
+            // Print rows with row index and multiplied values
+            for ($row = 1; $row <= $number; $row++) {
+                echo "<tr>";
+                
+                // Print the row index in the first column
+                echo "<th style='background-color: #f2f2f2;'>$row</th>";
+                
+                // Print multiplication values for each column
+                for ($col = 1; $col <= $number; $col++) {
+                    $product = $row * $col;
+                    echo "<td>$product</td>";
+                }
+                
+                echo "</tr>";
+            }
+
+            echo "</table>";
+        }
+    }
+    ?>
+
+</body>
+</html>

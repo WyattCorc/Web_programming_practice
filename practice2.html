@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>CSS Font Control</title>
+    <style>
+        #sampleText {
+            padding: 20px;
+            border: 5px solid black;
+            max-width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Font Control</h1>
+
+    <p id="sampleText">
+        Sample text here.
+    </p>
+
+    <label>
+        Paragraph RGB:
+        <input id="textColor" value="0, 0, 0" placeholder="R, G, B">
+    </label>
+
+    <label>
+        Border RGB:
+        <input id="borderColor" value="0, 0, 0" placeholder="R, G, B">
+    </label>
+
+    <label>
+        Border width:
+        <input id="borderWidth" type="number" value="5" min="0">
+        px
+    </label>
+
+    <button onclick="applyStyles()">Apply Changes</button>
+
+    <script>
+        function applyStyles() {
+            const paragraph = document.getElementById("sampleText");
+            const textColor = document.getElementById("textColor").value;
+            const borderColor = document.getElementById("borderColor").value;
+            const borderWidth = document.getElementById("borderWidth").value;
+
+            paragraph.style.color = `rgb(${textColor})`;
+            paragraph.style.borderColor = `rgb(${borderColor})`;
+            paragraph.style.borderWidth = `${borderWidth}px`;
+        }
+    </script>
+</body>
+<html>
